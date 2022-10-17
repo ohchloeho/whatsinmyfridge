@@ -30,7 +30,7 @@ export default function App() {
           <NavigationContainer>
             <Tab.Navigator
               screenOptions={({ route }) => ({
-                tabBarStyle: { height: 80, padding: 10 },
+                tabBarStyle: { height: 80, paddingTop: 10 },
                 tabBarIcon: ({ focused }) => {
                   let iconName;
                   let iconColor;

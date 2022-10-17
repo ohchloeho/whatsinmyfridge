@@ -15,6 +15,8 @@ const ScreenContainer = styled.View`
   padding-left: 10px;
   padding-right: 10px;
 `;
+const InventoryList = styled.FlatList`
+`
 
 export const InventoryScreen = () => {
   return (
