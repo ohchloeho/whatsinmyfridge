@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Searchbar } from "react-native-paper";
-import styled from "styled-components/native";
+import styled, { keyframes } from "styled-components/native";
 import { RecipesContext } from "../../../services/recipes/recipes.context";
 
 const SearchBarContainer = styled.View`
@@ -10,9 +10,10 @@ const SearchBarContainer = styled.View`
 
 export const SearchBar = ({ ...props }) => {
   const { onSearch } = useContext(RecipesContext);
-  const [searchKeyword, setSearchKeyword] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("apple");
+
   return (
-    <SearchBarContainer>
+    <SearchBarContainer >
       <Searchbar
         placeholder="search recipes..."
         inputStyle={{ fontFamily: "Futura" }}

@@ -6,8 +6,8 @@ export const fontFamily = {
 export const fontSizes = {
   h1: "128px",
   h2: "64px",
-  h3: "32px",
-  h4: "16px",
+  h3: "48px",
+  h4: "32px",
   body: "12px",
   caption: "10px",
 };
