@@ -9,7 +9,6 @@ export const IconButton = ({ iconName, onPress, label, size = 200 }) => {
       onPress={onPress}
       mode="contained"
       color={themes.colors.ui.lightMode}
-      compact
       labelStyle={{
         fontFamily: themes.fontFamily.primary,
         textTransform: "lowercase",

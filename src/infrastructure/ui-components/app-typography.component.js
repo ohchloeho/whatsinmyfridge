@@ -9,3 +9,8 @@ export const AppSubHeader = styled.Text`
   font-size: ${themes.fontSizes.h4};
   font-family: ${themes.fontFamily.primary};
 `;
+
+export const AppBodyText = styled.Text`
+  font-size: ${themes.fontSizes.body};
+  font-family: ${themes.fontFamily.primary};
+`;
