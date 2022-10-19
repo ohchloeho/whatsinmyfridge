@@ -9,7 +9,11 @@ export const AppSubHeader = styled.Text`
   font-size: ${themes.fontSizes.h4};
   font-family: ${themes.fontFamily.primary};
 `;
-
+export const AppBodyHeader = styled.Text`
+  font-size: ${themes.fontSizes.h5};
+  font-family: ${themes.fontFamily.primary};
+  color: ${props=>props.green ? themes.colors.ui.lightMode_secondary: themes.colors.ui.error};
+`;
 export const AppBodyText = styled.Text`
   font-size: ${themes.fontSizes.body};
   font-family: ${themes.fontFamily.primary};

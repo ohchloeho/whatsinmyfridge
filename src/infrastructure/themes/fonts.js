@@ -8,6 +8,7 @@ export const fontSizes = {
   h2: "64px",
   h3: "48px",
   h4: "32px",
+  h5: "24px",
   body: "15px",
   caption: "10px",
 };

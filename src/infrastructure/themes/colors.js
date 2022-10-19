@@ -4,6 +4,7 @@ export const colors = {
     lightMode_secondary: '#519F2D',
     darkMode: "#1D351C",
     disabled: "#696977",
+    error: "#9A381D",
   },
   background: {
     primary: "#F2F8F2",

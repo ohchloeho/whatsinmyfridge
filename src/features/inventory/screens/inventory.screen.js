@@ -1,20 +1,26 @@
 import React, { useContext } from "react";
-import { SafeArea, ScreenContainer } from "../../../infrastructure/ui-components/safe-area.component";
+import {
+  SafeArea,
+  ScreenContainer,
+} from "../../../infrastructure/ui-components/safe-area.component";
 import {
   AppSubHeader,
   AppTitle,
-  AppBodyText,
 } from "../../../infrastructure/ui-components/app-typography.component";
 import { IconButton } from "../../../infrastructure/ui-components/button.component";
+import { ItemTypeContainer } from "../components/item-type-container.component";
+import { ItemStatus } from "../components/item-status.component";
 import { Spacer } from "../../../infrastructure/ui-components/spacer.component";
 import styled from "styled-components/native";
 
 import { InventoryContext } from "../../../services/inventory/inventory.context";
 
-const InventoryList = styled.FlatList``;
+const InventoryTypesList = styled.FlatList.attrs({
+  contentContainerStyle: { justifyContent: "center", width: 370 },
+})``;
 
-export const InventoryScreen = ({navigation}) => {
-  const { inventoryContent } = useContext(InventoryContext);
+export const InventoryScreen = ({ navigation }) => {
+  const { inventoryContent, inventoryTypes } = useContext(InventoryContext);
   return (
     <SafeArea>
       <ScreenContainer>
@@ -29,18 +35,19 @@ export const InventoryScreen = ({navigation}) => {
             }}
           />
         </Spacer>
+        <Spacer position="top" size="medium">
+          <ItemStatus />
+        </Spacer>
         <Spacer position="top" size="small">
           <AppSubHeader>contents</AppSubHeader>
         </Spacer>
-        <InventoryList
-          data={inventoryContent}
+        <InventoryTypesList
+          data={inventoryTypes}
           renderItem={({ item }) => {
-            return <AppBodyText>{item.name}</AppBodyText>;
+            return <ItemTypeContainer label={item.value} />;
           }}
         />
       </ScreenContainer>
     </SafeArea>
   );
 };
-
-

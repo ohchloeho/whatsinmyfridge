@@ -12,18 +12,20 @@ const Input = styled(TextInput).attrs({
   fontFamily: "Futura",
   theme: { fonts: { regular: "" } },
 })`
+  padding: 0px;
   width: ${(props) => props.width}px;
   height: ${(props) => props.height}px;
 `;
 
-export const CustomInput = ({ label, onChangeText, size = 100 }) => {
+export const CustomInput = ({ label, onChangeText, size = 100, value }) => {
   return (
     <Spacer position="bottom" size="medium">
       <Input
         label={<Text style={{ fontFamily: "Futura" }}>{label}</Text>}
         onChangeText={onChangeText}
+        value={value}
         width={size}
-        height={46}
+        height={48}
       />
     </Spacer>
   );

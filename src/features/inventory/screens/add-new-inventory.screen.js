@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useContext} from "react";
 import { AppTitle } from "../../../infrastructure/ui-components/app-typography.component";
 import {
   SafeArea,
@@ -8,6 +8,7 @@ import { CustomInput } from "../../../infrastructure/ui-components/inputs.compon
 import { IconButton } from "../../../infrastructure/ui-components/button.component";
 import { DropdownSelect } from "../../../infrastructure/ui-components/dropdown-select.component";
 import { Spacer } from "../../../infrastructure/ui-components/spacer.component";
+import { InventoryContext } from "../../../services/inventory/inventory.context";
 
 import styled from "styled-components/native";
 
@@ -28,15 +29,7 @@ export const ButtonContainer = styled.View`
 
 export const AddNewInventoryScreen = ({ navigation }) => {
   const [selected, setSelected] = useState("");
-  const [dropdownValues, setDropdownValues] = useState([
-    { key: "1", value: "fresh" },
-    { key: "2", value: "spices & herbs" },
-    { key: "3", value: "carbs" },
-    { key: "4", value: "dairy" },
-    { key: "5", value: "sauces" },
-    { key: "6", value: "drinks" },
-    { key: "7", value: "protein" },
-  ]);
+  const {inventoryTypes} = useContext(InventoryContext)
 
   return (
     <SafeArea>
@@ -48,7 +41,7 @@ export const AddNewInventoryScreen = ({ navigation }) => {
           <CustomInput label="date purchased" size={300} />
           <CustomInput label="est. shelf life in days" size={300} />
           <DropdownSelect
-            data={dropdownValues}
+            data={inventoryTypes}
             setSelected={setSelected}
             label="item type"
           />
