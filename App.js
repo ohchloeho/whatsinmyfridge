@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import { themes } from "./src/infrastructure/themes";
-import { RecipesScreen } from "./src/features/recipes/screens/recipes.screen";
+import { RecipesNavigator } from "./src/features/recipes/navigation/recipes-navigator";
 import { InventoryNavigator } from "./src/features/inventory/navigation/inventory.navigator";
 import { RecipesContextProvider } from "./src/services/recipes/recipes.context";
 import { InventoryContextProvider } from "./src/services/inventory/inventory.context";
@@ -86,7 +86,7 @@ export default function App() {
                 <Tab.Screen
                   options={{ headerShown: false }}
                   name="recipes"
-                  component={RecipesScreen}
+                  component={RecipesNavigator}
                 />
                 <Tab.Screen name="settings" component={Settings} />
               </Tab.Navigator>

@@ -20,7 +20,7 @@ const InventoryTypesList = styled.FlatList.attrs({
 })``;
 
 export const InventoryScreen = ({ navigation }) => {
-  const { inventoryContent, inventoryTypes } = useContext(InventoryContext);
+  const { inventoryTypes } = useContext(InventoryContext);
   return (
     <SafeArea>
       <ScreenContainer>

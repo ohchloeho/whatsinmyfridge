@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { FlatList } from "react-native";
+import React, { useContext} from "react";
+import { FlatList, TouchableOpacity } from "react-native";
 import { SafeArea } from "../../../infrastructure/ui-components/safe-area.component";
 import styled from "styled-components/native";
 import { ActivityIndicator, Colors } from "react-native-paper";
@@ -15,24 +15,32 @@ const RecipesList = styled(FlatList)`
 `;
 const Loader = styled(ActivityIndicator).attrs({
   animating: true,
-  color: Colors.amber400,
+  color: Colors.green700,
   size: 50,
 })`
-  margin-top: 300px;
+  margin-top: 275px;
 `;
 
-export const RecipesScreen = () => {
+export const RecipesScreen = ({ navigation }) => {
   const { recipes, isLoading } = useContext(RecipesContext);
 
   return (
     <SafeArea>
-      <SearchBar/>
+      <SearchBar />
       {isLoading && <Loader />}
       {!isLoading && (
         <RecipesList
           data={recipes}
           renderItem={({ item }) => {
-            return <RecipeInfoCard recipe={item} />;
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("recipes_details", { recipe: item });
+                }}
+              >
+                <RecipeInfoCard recipe={item} />
+              </TouchableOpacity>
+            );
           }}
         />
       )}
