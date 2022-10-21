@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { themes } from "../themes";
 import { Button } from "react-native-paper";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Switch } from "react-native";
 import styled from "styled-components/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -28,16 +28,28 @@ const CircleButtonBorder = styled.View`
   height: ${(props) => props.size}px;
 `;
 
-export const CircleButton = ({ size = 25, color="black" }) => {
+export const CircleButton = ({ size = 25, color = "black" }) => {
   return (
     <TouchableOpacity>
       <CircleButtonBorder size={size}>
         <MaterialCommunityIcons
           name="arrow-right-drop-circle-outline"
-          size={size /1.15}
+          size={size / 1.15}
           color={color}
         />
       </CircleButtonBorder>
     </TouchableOpacity>
+  );
+};
+
+export const RadioButton = (props) => {
+  return (
+    <Switch
+      trackColor={{ false: "#767577", true: themes.colors.ui.lightMode }}
+      thumbColor="#f4f3f4"
+      ios_backgroundColor="#3e3e3e"
+      onValueChange={props.onChange}
+      value={props.value}
+    />
   );
 };

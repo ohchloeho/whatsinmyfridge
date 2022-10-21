@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { themes } from "../../../infrastructure/themes/index";
 import { FlatList, ScrollView } from "react-native";
 import { List } from "react-native-paper";
 import styled from "styled-components";
+import { SettingsContext } from "../../../services/settings/settings.context";
 
 const DynamicIngredientListRender = styled(FlatList).attrs({
   height: 200,
@@ -10,6 +11,7 @@ const DynamicIngredientListRender = styled(FlatList).attrs({
 })``;
 
 export const IngredientList = ({ data }) => {
+  const { isMetric } = useContext(SettingsContext);
   if (!data) {
     return;
   }
@@ -23,27 +25,32 @@ export const IngredientList = ({ data }) => {
       <DynamicIngredientListRender
         data={data}
         renderItem={({ item }) => {
-          //? for metric, enter in settings metric return value here:
-          //?   const metricValues = item.measures.metric;
-          //?   return (
-          //?     <List.Item
-          //?       key={Math.floor(Math.random() * 10) + item}
-          //?       title={`${Math.floor(metricValues.amount)} ${
-          //?         metricValues.unitShort
-          //?       } ${item.name}`}
-          //?     />
-
-          // for US measurement
-          const usValues = item.measures.us;
-          return (
-            <List.Item
-              key={Math.floor(Math.random() * 100) + item.id}
-              title={`${usValues.amount} ${usValues.unitShort.toLowerCase()} ${
-                item.name
-              }`}
-              titleStyle={{ fontFamily: themes.fontFamily.primary }}
-            />
-          );
+          if (isMetric) {
+            // metric measurements
+            const metricValues = item.measures.metric;
+            return (
+              <List.Item
+                key={Math.floor(Math.random() * 10) + item}
+                title={`${Math.floor(metricValues.amount)} ${
+                  metricValues.unitShort
+                } ${item.name}`}
+                titleStyle={{ fontFamily: themes.fontFamily.primary }}
+              />
+            );
+          } else {
+            // for US measurement
+            const usValues = item.measures.us;
+            return (
+              <List.Item
+                key={Math.floor(Math.random() * 100) + item.id}
+                title={`${
+                  usValues.amount
+                } ${usValues.unitShort.toLowerCase()} ${item.name}`}
+                titleStyle={{ fontFamily: themes.fontFamily.primary }}
+              />
+            );
+          }
+          
         }}
       />
     </List.Accordion>

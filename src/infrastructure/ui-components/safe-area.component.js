@@ -16,3 +16,10 @@ export const ScreenContainer = styled.View`
   padding-left: 10px;
   padding-right: 10px;
 `;
+
+export const SectionAreaRow = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+`
