@@ -33,7 +33,6 @@ export const InventoryContextProvider = ({ children }) => {
       img: [],
     },
   ]);
-
   const [inventoryTypes, setInventoryTypes] = useState([
     { key: "1", value: "all", description: "consists of everything" },
     { key: "2", value: "fresh", description: "fresh fruits and vegetables!" },
@@ -68,20 +67,26 @@ export const InventoryContextProvider = ({ children }) => {
       ]);
     }
   };
+  const removeInventoryType = (typeName) => {
+    const newArr = inventoryTypes.filter((type) => {
+      return type.value != typeName;
+    });
+    setInventoryTypes(newArr);
+  };
 
-  const updateLocalStorage = async (value) => {
+  const updateInventoryData = async (value) => {
     try {
       const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem("@inventory", jsonValue);
+      await AsyncStorage.setItem("@inventory_content", jsonValue);
     } catch (e) {
       // saving error
       console.log(e);
     }
   };
 
-  const loadLocalStorageData = async () => {
+  const loadInventoryData = async () => {
     try {
-      const jsonValue = await AsyncStorage.getItem("@inventory");
+      const jsonValue = await AsyncStorage.getItem("@inventory_content");
       return jsonValue != null
         ? setInventoryContent(JSON.parse(jsonValue))
         : null;
@@ -90,9 +95,21 @@ export const InventoryContextProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    loadInventoryData();
+  }, []);
+  useEffect(() => {
+    updateInventoryData(inventoryContent);
+  }, [inventoryContent]);
+
   return (
     <InventoryContext.Provider
-      value={{ inventoryContent, inventoryTypes, addNewInventoryType }}
+      value={{
+        inventoryContent,
+        inventoryTypes,
+        addNewInventoryType,
+        removeInventoryType,
+      }}
     >
       {children}
     </InventoryContext.Provider>

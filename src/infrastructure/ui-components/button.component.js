@@ -28,9 +28,9 @@ const CircleButtonBorder = styled.View`
   height: ${(props) => props.size}px;
 `;
 
-export const CircleButton = ({ size = 25, color = "black" }) => {
+export const CircleButton = ({ size = 25, color = "black" , onPress}) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPress}>
       <CircleButtonBorder size={size}>
         <MaterialCommunityIcons
           name="arrow-right-drop-circle-outline"

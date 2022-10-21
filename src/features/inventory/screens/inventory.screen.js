@@ -16,7 +16,11 @@ import styled from "styled-components/native";
 import { InventoryContext } from "../../../services/inventory/inventory.context";
 
 const InventoryTypesList = styled.FlatList.attrs({
-  contentContainerStyle: { justifyContent: "center", width: 370 },
+  contentContainerStyle: {
+    justifyContent: "flex-start",
+    width: 370,
+    flexDirection: "column",
+  },
 })``;
 
 export const InventoryScreen = ({ navigation }) => {
@@ -36,7 +40,7 @@ export const InventoryScreen = ({ navigation }) => {
           />
         </Spacer>
         <Spacer position="top" size="medium">
-          <ItemStatus />
+          <ItemStatus navigateToFavourites={() => {}} />
         </Spacer>
         <Spacer position="top" size="small">
           <AppSubHeader>contents</AppSubHeader>
@@ -44,7 +48,16 @@ export const InventoryScreen = ({ navigation }) => {
         <InventoryTypesList
           data={inventoryTypes}
           renderItem={({ item }) => {
-            return <ItemTypeContainer label={item.value} />;
+            return (
+              <ItemTypeContainer
+                label={item.value}
+                onPress={() => {
+                  navigation.navigate("inventory_categorized-items", {
+                    filter: item.value,
+                  });
+                }}
+              />
+            );
           }}
         />
       </ScreenContainer>

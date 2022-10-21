@@ -21,5 +21,6 @@ export const SectionAreaRow = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 7px 15px;
+  width: 370px;
 `

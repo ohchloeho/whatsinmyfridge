@@ -30,6 +30,7 @@ const FlexRowWrapper = styled.View`
 export const ItemStatus = ({
   status = true,
   itemsRequiringAttention = [],
+  navigateToFavourites
 }) => {
   // if status is true, food items are alright and no attention is required
   // if status is false, food items mentioned are soon to expire or low in stock
@@ -69,7 +70,7 @@ export const ItemStatus = ({
             <AppBodyText>
               check out recipes that include (item 1) here
             </AppBodyText>
-            <CircleButton size={35} color={themes.colors.ui.error}/>
+            <CircleButton size={35} color={themes.colors.ui.error} onPress={navigateToFavourites}/>
           </FlexRowWrapper>
         </Spacer>
       </Wrapper>

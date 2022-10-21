@@ -12,7 +12,10 @@ export const AppSubHeader = styled.Text`
 export const AppBodyHeader = styled.Text`
   font-size: ${themes.fontSizes.h5};
   font-family: ${themes.fontFamily.primary};
-  color: ${props=>props.green ? themes.colors.ui.lightMode_secondary: themes.colors.ui.error};
+  color: ${(props) =>
+    props.green
+      ? themes.colors.ui.lightMode_secondary
+      : themes.colors.ui.error};
 `;
 export const AppBodyH5 = styled.Text`
   font-size: ${themes.fontSizes.h5};
@@ -21,4 +24,10 @@ export const AppBodyH5 = styled.Text`
 export const AppBodyText = styled.Text`
   font-size: ${themes.fontSizes.body};
   font-family: ${themes.fontFamily.primary};
+`;
+export const AppBodyTextConstrained = styled.Text`
+  font-size: ${themes.fontSizes.body};
+  font-family: ${themes.fontFamily.primary};
+  width: ${(props) => (props.long ? "120px" : "50px")};
+  text-align: left;
 `;
