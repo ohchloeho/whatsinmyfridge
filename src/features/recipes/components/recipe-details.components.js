@@ -87,7 +87,6 @@ export const MoreInformation = ({ data }) => {
   if (!data) {
     return;
   }
-  console.log(data);
   const vegetarian = data.vegetarian ? "yes" : "no";
   const vegan = data.vegan ? "yes" : "no";
   const glutenFree = data.glutenFree ? "yes" : "no";

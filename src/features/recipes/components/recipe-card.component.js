@@ -1,9 +1,6 @@
 import React from "react";
 import { Spacer } from "../../../infrastructure/ui-components/spacer.component";
-import { Card } from "react-native-paper";
-import styled from "styled-components";
-import { View, Text, TouchableOpacity } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { Favourite } from "../../favourites/components/favourite.component";
 import {
   RecipeCard,
   RecipeImage,
@@ -26,9 +23,7 @@ export const RecipeInfoCard = ({ recipe }) => {
         <RecipeContentArea>
           <RecipeTitleWrapper>
             <RecipeTitle>{recipe.title}</RecipeTitle>
-            <TouchableOpacity>
-              <Feather name="thumbs-up" size={20} />
-            </TouchableOpacity>
+            <Favourite recipe={recipe} />
           </RecipeTitleWrapper>
           <RecipeInfoWrapper>
             <RecipeContentText>serves {recipe.servings}</RecipeContentText>
