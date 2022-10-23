@@ -9,7 +9,7 @@ import { AppBodyText } from "../../../infrastructure/ui-components/app-typograph
 import { TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-export const SettingsScreen = ({ navigation }) => {
+export const SettingsScreen = ({navigation}) => {
   const { isMetric, changeMeasurement } = useContext(SettingsContext);
   return (
     <SafeArea>
@@ -22,11 +22,7 @@ export const SettingsScreen = ({ navigation }) => {
           value={isMetric}
         />
       </SectionAreaRow>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("settings_favourites_list");
-        }}
-      >
+      <TouchableOpacity onPress={()=>{navigation.navigate("settings_favourites_list")}}>
         <SectionAreaRow>
           <AppBodyText>favourites list</AppBodyText>
           <AntDesign name="rightcircleo" size={24} color="black" />

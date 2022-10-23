@@ -22,5 +22,5 @@ export const SectionAreaRow = styled.View`
   align-items: center;
   justify-content: space-between;
   padding: 7px 15px;
-  width: 370px;
+  width: ${props=>props.full ? "390px":"370px"};
 `

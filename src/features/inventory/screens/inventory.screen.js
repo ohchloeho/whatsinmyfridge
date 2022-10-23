@@ -40,7 +40,13 @@ export const InventoryScreen = ({ navigation }) => {
           />
         </Spacer>
         <Spacer position="top" size="medium">
-          <ItemStatus navigateToFavourites={() => {}} />
+          <ItemStatus
+            navigateToFavourites={() => {
+              navigation.navigate("settings", {
+                screen: "settings_favourites_list",
+              });
+            }}
+          />
         </Spacer>
         <Spacer position="top" size="small">
           <AppSubHeader>contents</AppSubHeader>

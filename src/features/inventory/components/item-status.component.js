@@ -5,9 +5,7 @@ import {
   AppBodyHeader,
   AppBodyText,
 } from "../../../infrastructure/ui-components/app-typography.component";
-import {
-  CircleButton,
-} from "../../../infrastructure/ui-components/button.component";
+import { CircleButton } from "../../../infrastructure/ui-components/button.component";
 import { Spacer } from "../../../infrastructure/ui-components/spacer.component";
 
 const Wrapper = styled.View`
@@ -30,7 +28,7 @@ const FlexRowWrapper = styled.View`
 export const ItemStatus = ({
   status = true,
   itemsRequiringAttention = [],
-  navigateToFavourites
+  navigateToFavourites,
 }) => {
   // if status is true, food items are alright and no attention is required
   // if status is false, food items mentioned are soon to expire or low in stock
@@ -49,7 +47,11 @@ export const ItemStatus = ({
             <AppBodyText>
               check out some of your favourited recipes!
             </AppBodyText>
-            <CircleButton size={35} color={themes.colors.ui.lightMode_secondary}/>
+            <CircleButton
+              size={35}
+              color={themes.colors.ui.lightMode_secondary}
+              onPress={navigateToFavourites}
+            />
           </FlexRowWrapper>
         </Spacer>
       </Wrapper>
@@ -70,7 +72,11 @@ export const ItemStatus = ({
             <AppBodyText>
               check out recipes that include (item 1) here
             </AppBodyText>
-            <CircleButton size={35} color={themes.colors.ui.error} onPress={navigateToFavourites}/>
+            <CircleButton
+              size={35}
+              color={themes.colors.ui.error}
+              onPress={navigateToFavourites}
+            />
           </FlexRowWrapper>
         </Spacer>
       </Wrapper>

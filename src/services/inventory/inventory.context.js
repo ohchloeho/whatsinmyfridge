@@ -74,6 +74,26 @@ export const InventoryContextProvider = ({ children }) => {
     setInventoryTypes(newArr);
   };
 
+  const updateInventoryType = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem("@inventory_types", jsonValue);
+    } catch (e) {
+      // saving error
+      console.log(e);
+    }
+  };
+  const loadInventoryType = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem("@inventory_types");
+      return jsonValue != null
+        ? setInventoryTypes(JSON.parse(jsonValue))
+        : null;
+    } catch (e) {
+      // error reading value
+    }
+  };
+
   const updateInventoryData = async (value) => {
     try {
       const jsonValue = JSON.stringify(value);
@@ -97,9 +117,11 @@ export const InventoryContextProvider = ({ children }) => {
 
   useEffect(() => {
     loadInventoryData();
+    loadInventoryType();
   }, []);
   useEffect(() => {
     updateInventoryData(inventoryContent);
+    updateInventoryType(inventoryTypes);
   }, [inventoryContent]);
 
   return (
