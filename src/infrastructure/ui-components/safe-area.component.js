@@ -16,11 +16,11 @@ export const ScreenContainer = styled.View`
   padding-left: 10px;
   padding-right: 10px;
 `;
-
 export const SectionAreaRow = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 7px 15px;
-  width: ${props=>props.full ? "390px":"370px"};
-`
+  padding: 0px 15px;
+  height: 80px;
+  width: ${(props) => (props.full ? "390px" : "370px")};
+`;
