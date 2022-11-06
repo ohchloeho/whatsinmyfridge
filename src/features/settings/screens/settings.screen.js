@@ -13,6 +13,8 @@ import { AntDesign, MaterialCommunityIcons } from "@expo/vector-icons";
 import { themes } from "../../../infrastructure/themes";
 import styled from "styled-components/native";
 
+import { AuthContext } from "../../../services/authentication/auth.context";
+
 const ProfileWrapper = styled.View`
   height: 200px;
   width: 390px;
@@ -24,12 +26,14 @@ const ProfileWrapper = styled.View`
 export const SettingsScreen = ({ navigation }) => {
   const { isMetric, changeMeasurement } = useContext(SettingsContext);
   const [photo, setPhoto] = useState(null);
+  const { user, logOut } = useContext(AuthContext);
 
   // method to get stored photo
   const getProfilePicture = async () => {
     const photoURI = await AsyncStorage.getItem(`user-photo`);
     setPhoto(photoURI);
   };
+  //use effect here to run above function on render
 
   return (
     <SafeArea>
@@ -45,7 +49,7 @@ export const SettingsScreen = ({ navigation }) => {
             backgroundColor={themes.colors.ui.lightMode_secondary}
           />
         </TouchableOpacity>
-        <AppBodyText>user email</AppBodyText>
+        <AppBodyText>{user._tokenResponse.email}</AppBodyText>
       </ProfileWrapper>
       <SectionAreaRow full>
         <AppBodyText>metric enable</AppBodyText>
@@ -72,7 +76,7 @@ export const SettingsScreen = ({ navigation }) => {
         <AppBodyText>logout</AppBodyText>
         <TouchableOpacity
           onPress={() => {
-            console.log("logout");
+            console.log(logOut());
           }}
         >
           <MaterialCommunityIcons name="door" size={25} color="black" />

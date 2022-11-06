@@ -16,6 +16,14 @@ export const ScreenContainer = styled.View`
   padding-left: 10px;
   padding-right: 10px;
 `;
+export const LoginScreenContainer = styled.View`
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  padding-left: 10px;
+  padding-right: 10px;
+`;
 export const SectionAreaRow = styled.View`
   flex-direction: row;
   align-items: center;

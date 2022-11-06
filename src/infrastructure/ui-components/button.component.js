@@ -4,6 +4,7 @@ import { Button } from "react-native-paper";
 import { TouchableOpacity, Switch } from "react-native";
 import styled from "styled-components/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AppBodyText } from "./app-typography.component";
 
 export const IconButton = ({ iconName, onPress, label, size = 200 }) => {
   return (
@@ -27,8 +28,14 @@ const CircleButtonBorder = styled.View`
   width: ${(props) => props.size}px;
   height: ${(props) => props.size}px;
 `;
+const RectButtonBorder = styled.View`
+  padding: 10px 20px;
+  background-color: ${themes.colors.ui.lightMode};
+  border: 1px solid ${themes.colors.ui.lightMode};
+  border-radius: 20px;
+`;
 
-export const CircleButton = ({ size = 25, color = "black" , onPress}) => {
+export const CircleButton = ({ size = 25, color = "black", onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <CircleButtonBorder size={size}>
@@ -38,6 +45,15 @@ export const CircleButton = ({ size = 25, color = "black" , onPress}) => {
           color={color}
         />
       </CircleButtonBorder>
+    </TouchableOpacity>
+  );
+};
+export const RectButton = ({ onPress, title }) => {
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <RectButtonBorder>
+        <AppBodyText>{title}</AppBodyText>
+      </RectButtonBorder>
     </TouchableOpacity>
   );
 };

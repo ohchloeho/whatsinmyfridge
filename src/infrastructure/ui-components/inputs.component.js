@@ -30,3 +30,30 @@ export const CustomInput = ({ label, onChangeText, size = 100, value }) => {
     </Spacer>
   );
 };
+export const FullWidthInput = ({ label, onChangeText, value }) => {
+  return (
+    <Spacer position="bottom" size="medium">
+      <Input
+        label={<Text style={{ fontFamily: "Futura" }}>{label}</Text>}
+        onChangeText={onChangeText}
+        value={value}
+        height={48}
+        style={{ width: 300 }}
+      />
+    </Spacer>
+  );
+};
+export const PasswordInput = ({ label, onChangeText, value }) => {
+  return (
+    <Spacer position="bottom" size="medium">
+      <Input
+        label={<Text style={{ fontFamily: "Futura" }}>{label}</Text>}
+        onChangeText={onChangeText}
+        value={value}
+        height={48}
+        style={{ width: 300 }}
+        secureTextEntry={true}
+      />
+    </Spacer>
+  );
+};
