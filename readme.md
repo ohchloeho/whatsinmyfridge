@@ -1,6 +1,2 @@
-functionality #1: click button on recipe to add ingredients to groceries list
-- ingredients that are above 5 qty and not expiring in less than a week in inventory should not be added to list
-
-groceries tab: lists with dates and descriptions
-- when all items of a list is checked, option to delete is shown
-- 
+this is a grocery app that allows users to add grocery items required for recipes to a dynamic shopping list. this application also checks users' 'inventory' and classifies items to solve the problem of food and money waste due to forgetfulness of expiry dates, purchasing excessive food items, etc. 
+The inventory portion of this application will also check food items in its 'inventory' such as nearing expiry, or low stocks, and recommend actions to be taken by the user such as recipes that uses the near-expired item(s). 
