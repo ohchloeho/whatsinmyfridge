@@ -7,7 +7,7 @@ export const GroceryItem = ({ name, type, qty }) => {
   const [isChecked, setIsChecked] = useState(false);
   return (
     <SectionAreaRow>
-      <AppBodyTextConstrained>{name}</AppBodyTextConstrained>
+      <AppBodyTextConstrained long>{name}</AppBodyTextConstrained>
       <AppBodyTextConstrained long>{type.toLowerCase()}</AppBodyTextConstrained>
       <AppBodyTextConstrained>{qty}</AppBodyTextConstrained>
       <CheckBox
